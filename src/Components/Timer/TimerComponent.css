@@ -1,0 +1,13 @@
+.time{
+  color:white;
+}
+.container{
+    background-color: rgb(83, 24, 24);
+    height:65%;
+    width:40%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:800px; 
+    margin:0 auto;
+}

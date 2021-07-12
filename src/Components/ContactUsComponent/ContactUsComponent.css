@@ -1,0 +1,47 @@
+.title{
+    padding-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}
+.paragraph{
+    font-size:20px;
+    width:50%;
+    padding-left:350px;
+}
+
+.rootDiv{
+    text-align: center;
+    background-color: rgb(247, 242, 242);
+}
+
+.location-details{
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    height: 90%;
+    width: 30%;
+    margin-left: 220px;
+}
+ .contact-details{
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    height: 90%;
+    width: 30%;
+    margin-left:100px;
+  }
+ .details-container{
+    display: flex;
+    flex-direction: row;
+    height:200px;
+
+ }
+ .label-a{
+     padding-top:60px;
+     font-weight: bold;
+ }
+ .label-b{
+     padding-top:20px;
+ }
+ 

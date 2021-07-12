@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import ContactUsComponent from './Components/ContactUsComponent/ContactUsComponent';
+import Facebook from './Components/facebook/Facebook';
+import Greeting from './Components/Greeting/Greeting';
+import VoteComponent from './Components/VoteComponent/VoteComponent';
+import TimerComponent from './Components/Timer/TimerComponent';
+import ToDoList from './Components/ToDo/ToDoList';
+import ToDoForm from './Components/ToDo/ToDoForm';
 import './App.css';
-
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Greeting />
+    // <ContactUsComponent />
+    // <Facebook />
+    //<VoteComponent />
+    // <TimerComponent />
+    <ToDoForm />
   );
 }
 
