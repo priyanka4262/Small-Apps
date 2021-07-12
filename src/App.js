@@ -10,12 +10,13 @@ import './App.css';
 function App() {
 
   return (
-    // <Greeting />
-    // <ContactUsComponent />
-    // <Facebook />
+
+    //<Greeting />
+    //<ContactUsComponent />
+    <Facebook />
     //<VoteComponent />
-    // <TimerComponent />
-    <ToDoForm />
+    //<TimerComponent />
+    //<ToDoForm />
   );
 }
 
