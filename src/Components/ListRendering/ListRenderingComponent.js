@@ -49,7 +49,10 @@ class ListRenderingComponent extends Component {
       newPostsList = this.state.posts;
     } else {
       newPostsList = this.state.displayPosts.filter(
-        (post) => post.id == event.target.value
+        (post) =>
+          post.id == event.target.value ||
+          post.title.toLowerCase().includes(event.target.value.toLowerCase()) ||
+          post.content.toLowerCase().includes(event.target.value.toLowerCase())
       );
     }
     //console.log(newPostsList);
@@ -63,7 +66,7 @@ class ListRenderingComponent extends Component {
       <>
         <input
           type="text"
-          placeholder="Enter ID to filter"
+          placeholder="Enter ID/Text to filter"
           value={this.state.number}
           className="form-control text-field"
           onChange={(e) => this.onChangeHandler(e)}
