@@ -4,8 +4,8 @@ import "./VoteComponent.css";
 class VoteComponent extends Component {
   constructor() {
     super();
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    this.onAgeChange = this.onAgeChange.bind(this);
+    // this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    // this.onAgeChange = this.onAgeChange.bind(this);
     this.state = {
       greeting: "",
     };
@@ -14,12 +14,12 @@ class VoteComponent extends Component {
     };
   }
 
-  onAgeChange(event) {
+  onAgeChange = (event) => {
     this.setState({
       age: event.target.value,
     });
-  }
-  onSubmitHandler(age) {
+  };
+  onSubmitHandler = (age) => {
     if (this.state.age < 18) {
       this.setState({
         greeting: "You are not eligible to vote!",
@@ -30,7 +30,7 @@ class VoteComponent extends Component {
       });
     }
     console.log("value updated");
-  }
+  };
   render() {
     return (
       <div className="vote-container">
