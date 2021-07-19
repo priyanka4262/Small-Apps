@@ -13,6 +13,8 @@ import LoginForm from "./Components/Forms/LoginForm";
 import RegistrationForm from "./Components/Forms/RegistrationForm";
 import DisplayData from "./Components/DisplayData/DisplayData";
 import DisplayList from "./Components/DisplayData/DisplayList";
+import LoginFormValidate from "./Components/Forms/LoginFormValidate";
+import DropDownComponent from "./Components/DropDownComponent";
 import "./App.scss";
 function App() {
   return (
@@ -28,7 +30,9 @@ function App() {
     //<ToDoList></ToDoList>
     //<LoginForm></LoginForm>
     //<RegistrationForm />
-    <DisplayData />
+    // <DisplayData />
+    // <LoginFormValidate></LoginFormValidate>
+    <DropDownComponent></DropDownComponent>
   );
 }
 

@@ -3,7 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+// import "jquery/dist/jquery.min.js";
+// import "popper.js/dist/umd/popper.min.js";
+// import "bootstrap/js/dist/dropdown";
+// C:\Users\dilip\first-react-app\node_modules\bootstrap\js\dist\dropdown.js
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+//import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 ReactDOM.render(
   <React.StrictMode>
