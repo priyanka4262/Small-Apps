@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Component, useState } from "react";
 import ContactUsComponent from "./Components/ContactUsComponent/ContactUsComponent";
 import Facebook from "./Components/facebook/Facebook";
 import Greeting from "./Components/Greeting/Greeting";
@@ -15,7 +15,12 @@ import DisplayData from "./Components/DisplayData/DisplayData";
 import DisplayList from "./Components/DisplayData/DisplayList";
 import LoginFormValidate from "./Components/Forms/LoginFormValidate";
 import DropDownComponent from "./Components/DropDownComponent";
+import FetchEmployee from "./Components/FetchComponent/FetchEmployee";
+import FetchEmp from "./Components/FetchComponent/FetchEmp";
+import CommentsComponent from "./Components/FetchComponent/Axios/CommentsComponent";
 import "./App.scss";
+import UserDetails from "./Components/FetchComponent/Axios/UserDetails";
+import ReducerComponent from "./Components/Hooks/ReducerComponent";
 function App() {
   return (
     //<Greeting />
@@ -29,10 +34,15 @@ function App() {
     // <ListRenderingComponent />
     //<ToDoList></ToDoList>
     //<LoginForm></LoginForm>
-    //<RegistrationForm />
+    // <RegistrationForm />
     // <DisplayData />
     // <LoginFormValidate></LoginFormValidate>
-    <DropDownComponent></DropDownComponent>
+    //<DropDownComponent></DropDownComponent>
+    //<FetchEmployee></FetchEmployee>
+    //<FetchEmp></FetchEmp>
+    <UserDetails></UserDetails>
+    // <CommentsComponent></CommentsComponent>
+    // <ReducerComponent></ReducerComponent>
   );
 }
 
