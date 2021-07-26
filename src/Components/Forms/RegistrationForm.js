@@ -1,69 +1,139 @@
 import react, { Component } from "react";
+import validate from "validate.js";
 class RegistrationForm extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
+      name: "",
       mobileNum: "",
       address: "",
       errorMsgs: {},
       gender: "female",
       course: "",
     };
+    this.constraints = {
+      name: {
+        presence: {
+          message: "Name cannot be blank",
+        },
+        length: {
+          maximum: 20,
+          message: "Name should not be greater than 20 chars",
+        },
+      },
+      mobileNum: {
+        presence: {
+          message: "Mobile number cannot be blank",
+        },
+        length: {
+          maximum: 10,
+          message: "mobile number should be 10 numbers",
+        },
+      },
+      address: {
+        presence: {
+          message: "Address cannot be blank",
+        },
+        length: {
+          maximum: 20,
+          message: "Address should be maximum of 20 characters",
+        },
+      },
+      course: {
+        presence: {
+          message: "course should be selected",
+        },
+        length: {
+          minimum: 1,
+          message: "course is a required field",
+        },
+      },
+    };
   }
+
+  // validateInput = (key, value) => {
+  //   const { errorMsgs } = this.state;
+  //   if (key === "username") {
+  //     if (value?.length > 10) {
+  //       errorMsgs[key] = "Username length should be less than 10 characters!";
+  //     } else {
+  //       errorMsgs[key] = "";
+  //     }
+  //   } else if (key === "mobileNum") {
+  //     if (value?.length === 10) {
+  //       errorMsgs[key] = "";
+  //     } else {
+  //       errorMsgs[key] = "Mobile number should be 10 numbers";
+  //     }
+  //   } else if (key === "address") {
+  //     if (value?.length > 10) {
+  //       errorMsgs[key] = "address should be less than 10 characters";
+  //     } else errorMsgs[key] = "";
+  //   } else if (key == "course") {
+  //     if (value == "Select") {
+  //       errorMsgs[key] = "please select another option";
+  //     } else {
+  //       errorMsgs[key] = "";
+  //     }
+  //   }
+  //   this.setState({
+  //     errorMsgs,
+  //   });
+  // };
+
+  // onChangeHandler = (e) => {
+  //   e.stopPropagation();
+  //   console.log(e);
+  //   let key = e.target.name;
+  //   let value = e.target.value;
+  //   console.log("value=>", e.target.value);
+  //   console.log("name->", e.target.name);
+  //   this.setState(
+  //     {
+  //       [key]: value,
+  //     },
+  //     () => {
+  //       this.validateInput(key, value);
+  //     }
+  //   );
+  // };
+  validateInput = (field, value) => {
+    console.log("field=>", field, "value=>", value);
+    let object = {};
+    object[field] = value;
+    console.log(object, " : object after setting value in object[field]");
+    let constraint = this.constraints[field];
+    console.log("constraint", constraint, this.constraints[field]);
+    let result = validate(object, { [field]: constraint });
+    console.log(result);
+    if (result) {
+      return result[field][0];
+    }
+    return null;
+  };
+
   onSubmitHandler = (e) => {
     e.preventDefault();
     console.log(this.state);
   };
 
-  validateInput = (key, value) => {
+  onChangeHandler = (e) => {
     const { errorMsgs } = this.state;
-    if (key === "username") {
-      if (value?.length > 10) {
-        errorMsgs[key] = "Username length should be less than 10 characters!";
-      } else {
-        errorMsgs[key] = "";
-      }
-    } else if (key === "mobileNum") {
-      if (value?.length === 10) {
-        errorMsgs[key] = "";
-      } else {
-        errorMsgs[key] = "Mobile number should be 10 numbers";
-      }
-    } else if (key === "address") {
-      if (value?.length > 10) {
-        errorMsgs[key] = "address should be less than 10 characters";
-      } else errorMsgs[key] = "";
-    } else if (key == "course") {
-      if (value == "Select") {
-        errorMsgs[key] = "please select another option";
-      } else {
-        errorMsgs[key] = "";
-      }
-    }
+    e.preventDefault();
+    let key = e.target.name;
+    let value = e.target.value === "Select" ? undefined : e.target.value;
+
+    let errorMsg = this.validateInput(key, value);
+    console.log(value);
+    errorMsgs[key] = errorMsg;
     this.setState({
-      errorMsgs,
+      [key]: value,
+      errorMsgs: errorMsgs,
     });
   };
 
-  onChangeHandler = (e) => {
-    e.stopPropagation();
-    console.log(e);
-    let key = e.target.name;
-    let value = e.target.value;
-    console.log(e.target.value);
-    console.log(e.target.name);
-    this.setState(
-      {
-        [key]: value,
-      },
-      () => {
-        this.validateInput(key, value);
-      }
-    );
-  };
   render() {
-    const { username, mobileNum, address, course, errorMsgs } = this.state;
+    const { name, mobileNum, address, course, errorMsgs } = this.state;
     return (
       <div className="col-4 container container-div border">
         <form onSubmit={this.onSubmitHandler}>
@@ -73,17 +143,17 @@ class RegistrationForm extends Component {
             </label>
             <input
               type="text"
-              name="username"
-              value={username}
+              name="name"
+              value={name}
               className="form-control col-xs-4 "
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter Name"
               onChange={this.onChangeHandler}
             ></input>
-            {errorMsgs.username && (
+            {errorMsgs.name && (
               <small id="emailHelp" className="form-text text-muted">
-                {errorMsgs.username}
+                {errorMsgs.name}
               </small>
             )}
           </div>
@@ -151,57 +221,33 @@ class RegistrationForm extends Component {
               Female
             </label>
           </div>
-          <label>
-            Course:
+
+          <div className="form-group">
+            <label htmlFor="exampleFormControlSelect1">Course</label>
             <select
+              className="form-control"
+              id="exampleFormControlSelect1"
               name="course"
               onChange={this.onChangeHandler}
               value={course}
             >
-              <option value="Select">Select</option>
+              <option>Select</option>
               <option value="Angular">Angular</option>
               <option value="Vue">Vue</option>
               <option value="React">React</option>
               <option value="Django">Django</option>
             </select>
-          </label>
+          </div>
           {errorMsgs.course && (
             <small id="emailHelp" className="form-text text-muted">
               {errorMsgs.course}
             </small>
           )}
-          {/* <div className="dropdown">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Course
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a
-                className="dropdown-item dropdown-toggle"
-                href="#"
-                role="button"
-              >
-                React
-              </a>
-              <a className="dropdown-item" href="#">
-                Angular
-              </a>
-              <a className="dropdown-item" href="#">
-                Vue
-              </a>
-            </div>
-          </div> */}
-
           <button
             type="submit"
             className="btn btn-primary btn-submit"
             onSubmit={this.onSubmitHandler}
+            disabled={!name || !mobileNum}
           >
             Submit
           </button>

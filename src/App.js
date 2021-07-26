@@ -21,6 +21,9 @@ import CommentsComponent from "./Components/FetchComponent/Axios/CommentsCompone
 import "./App.scss";
 import UserDetails from "./Components/FetchComponent/Axios/UserDetails";
 import ReducerComponent from "./Components/Hooks/ReducerComponent";
+import LightDemo from "./Components/Reducer/LightDemo";
+import ContextConsumer from './Components/Context/ContextConsumer'
+import ContextProvider from "./Components/Context/ContextProvider";
 function App() {
   return (
     //<Greeting />
@@ -34,15 +37,19 @@ function App() {
     // <ListRenderingComponent />
     //<ToDoList></ToDoList>
     //<LoginForm></LoginForm>
-    // <RegistrationForm />
+    //<RegistrationForm />
     // <DisplayData />
     // <LoginFormValidate></LoginFormValidate>
     //<DropDownComponent></DropDownComponent>
     //<FetchEmployee></FetchEmployee>
     //<FetchEmp></FetchEmp>
-    <UserDetails></UserDetails>
+    //<UserDetails></UserDetails>
     // <CommentsComponent></CommentsComponent>
     // <ReducerComponent></ReducerComponent>
+   // <LightDemo></LightDemo>
+   //<ContextConsumer></ContextConsumer>
+   <ContextProvider name="priyanka"></ContextProvider>
+    
   );
 }
 

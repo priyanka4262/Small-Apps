@@ -1,8 +1,5 @@
 import react, { Component } from "react";
 class DisplayList extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     let newPostsList = this.props.postList.filter(
       (post) =>

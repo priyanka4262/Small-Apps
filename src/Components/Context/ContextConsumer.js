@@ -2,6 +2,7 @@ import react, { Component, useContext } from "react";
 import {Ctx} from './ContextProvider';
 const ContextConsumer = (props) => {
     const name=useContext(Ctx);
+    console.log(name);
         return(
             <div>         
             <div>I am from context consumer</div>

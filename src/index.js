@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import ErrorBoundaryComponent from "./Components/ErrorBoundaryComponent.js"
 // import "jquery/dist/jquery.min.js";
 // import "popper.js/dist/umd/popper.min.js";
 // import "bootstrap/js/dist/dropdown";
@@ -13,7 +14,9 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 ReactDOM.render(
   <React.StrictMode>
+    <ErrorBoundaryComponent>
     <App />
+    </ErrorBoundaryComponent>
   </React.StrictMode>,
   document.getElementById("root")
 );
