@@ -1,6 +1,16 @@
 import react, { useState } from "react";
+import { useHistory,useLocation,useParams } from "react-router";
 const Greeting = () => {
   const [wish, setWish] = useState("");
+
+  const history=useHistory();
+  const location=useLocation();
+  const param=useParams();
+
+  const redirectToHome=()=>{
+    history.push("./"); // to redirect to the path mentioned
+    console.log(location.pathname);// to get current path
+  }
   const onTimeChangeHandler = (event) => {
     if (!event.target.value) {
       setWish("Enter any number");
@@ -23,6 +33,7 @@ const Greeting = () => {
       <label>Enter time in hours:</label>
       <input type="text" onChange={onTimeChangeHandler}></input>
       <label className="wishLabel">{wish}</label>
+      <button onClick={()=>redirectToHome()}>Bact to Home</button>
     </div>
   );
 };

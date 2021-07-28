@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ErrorBoundaryComponent from "./Components/ErrorBoundaryComponent.js"
+import { BrowserRouter } from "react-router-dom";
 // import "jquery/dist/jquery.min.js";
 // import "popper.js/dist/umd/popper.min.js";
 // import "bootstrap/js/dist/dropdown";
@@ -14,9 +15,11 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
     <ErrorBoundaryComponent>
     <App />
     </ErrorBoundaryComponent>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

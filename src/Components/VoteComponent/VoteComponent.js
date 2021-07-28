@@ -1,4 +1,5 @@
 import react, { Component } from "react";
+import { withRouter } from "react-router";
 import "./VoteComponent.css";
 
 class VoteComponent extends Component {
@@ -32,6 +33,7 @@ class VoteComponent extends Component {
     console.log("value updated");
   };
   render() {
+    console.log(this.props);
     return (
       <div className="vote-container">
         <input
@@ -54,4 +56,4 @@ class VoteComponent extends Component {
   }
 }
 
-export default VoteComponent;
+export default withRouter(VoteComponent);

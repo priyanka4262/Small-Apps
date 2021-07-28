@@ -1,6 +1,6 @@
 import react, { Component } from "react";
 import "./LoginForm.scss";
-
+import { withRouter } from "react-router";
 class LoginForm extends Component {
   constructor() {
     super();
@@ -13,6 +13,7 @@ class LoginForm extends Component {
   onSubmitHandler = (e) => {
     e.preventDefault();
     console.log(this.state);
+    this.props.history.push("./Registration");
   };
   validateInput = (key, value) => {
     const { errorMsgs } = this.state;
@@ -49,6 +50,8 @@ class LoginForm extends Component {
   };
   render() {
     const { username, password, errorMsgs } = this.state;
+    console.log(this.props.location.pathname)
+    console.log(this.props)
     return (
       <div className="col-4 container container-div border">
         <form onSubmit={this.onSubmitHandler}>
@@ -101,4 +104,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
